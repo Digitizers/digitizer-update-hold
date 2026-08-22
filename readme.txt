@@ -1,5 +1,5 @@
 === Update Policy ===
-Contributors: digitizer
+Contributors: benkalsky
 Tags: updates, core updates, major release, automatic updates, maintenance
 Requires at least: 5.5
 Tested up to: 7.1
