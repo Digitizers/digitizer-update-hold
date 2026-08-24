@@ -1,6 +1,6 @@
 <?php
 /**
- * Update Policy - the WordPress wiring.
+ * Digitizer Update Hold - the WordPress wiring.
  *
  * The only file here with side effects, and the two halves are kept apart on
  * purpose: applying the hold is a read and writes nothing, recording a first
@@ -12,7 +12,7 @@
  * request; the stamps stay in the option, inert, and are picked up again if it
  * is switched back on.
  *
- * @package Update_Policy
+ * @package Digitizer_Update_Hold
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * The WordPress wiring - the only class with side effects.
  */
-class Update_Policy_Core {
+class Digitizer_Update_Hold_Core {
 
 	/**
 	 * Register the filters.
@@ -68,13 +68,13 @@ class Update_Policy_Core {
 		if ( ! is_object( $transient ) || ! isset( $transient->updates ) || ! is_array( $transient->updates ) ) {
 			return $transient;
 		}
-		$policy = Update_Policy_Settings::all();
-		$kept   = Update_Policy_Offers::filter(
+		$policy = Digitizer_Update_Hold_Settings::all();
+		$kept   = Digitizer_Update_Hold_Offers::filter(
 			$transient->updates,
 			self::installed_version(),
 			$policy['seen'],
 			$policy['released'],
-			Update_Policy_Settings::hold_days(),
+			Digitizer_Update_Hold_Settings::hold_days(),
 			time()
 		);
 		if ( count( $kept ) === count( $transient->updates ) ) {
@@ -102,13 +102,13 @@ class Update_Policy_Core {
 		if ( ! is_object( $raw ) || ! isset( $raw->updates ) || ! is_array( $raw->updates ) ) {
 			return;
 		}
-		$policy  = Update_Policy_Settings::all();
-		$stamped = Update_Policy_Offers::stamp( $policy['seen'], $raw->updates, self::installed_version(), time() );
+		$policy  = Digitizer_Update_Hold_Settings::all();
+		$stamped = Digitizer_Update_Hold_Offers::stamp( $policy['seen'], $raw->updates, self::installed_version(), time() );
 		if ( $stamped === $policy['seen'] ) {
 			return;
 		}
 		$policy['seen'] = $stamped;
-		Update_Policy_Settings::save( $policy );
+		Digitizer_Update_Hold_Settings::save( $policy );
 	}
 
 	/**
@@ -148,19 +148,19 @@ class Update_Policy_Core {
 		if ( ! is_object( $raw ) || ! isset( $raw->updates ) || ! is_array( $raw->updates ) ) {
 			return array();
 		}
-		$policy    = Update_Policy_Settings::all();
+		$policy    = Digitizer_Update_Hold_Settings::all();
 		$installed = self::installed_version();
-		$days      = Update_Policy_Settings::hold_days();
+		$days      = Digitizer_Update_Hold_Settings::hold_days();
 		$now       = time();
 
 		$out = array();
-		foreach ( Update_Policy_Offers::majors( $raw->updates, $installed ) as $branch => $version ) {
+		foreach ( Digitizer_Update_Hold_Offers::majors( $raw->updates, $installed ) as $branch => $version ) {
 			$stamp = isset( $policy['seen'][ $branch ] ) ? (int) $policy['seen'][ $branch ] : 0;
-			if ( empty( $policy['released'][ $branch ] ) && Update_Policy_Version::is_held( $stamp, $days, $now ) ) {
+			if ( empty( $policy['released'][ $branch ] ) && Digitizer_Update_Hold_Version::is_held( $stamp, $days, $now ) ) {
 				$out[ $branch ] = array(
 					'version' => $version,
 					'seen'    => $stamp,
-					'until'   => Update_Policy_Version::held_until( $stamp, $days ),
+					'until'   => Digitizer_Update_Hold_Version::held_until( $stamp, $days ),
 				);
 			}
 		}
@@ -174,13 +174,13 @@ class Update_Policy_Core {
 	 * @return bool
 	 */
 	public static function release( $branch ) {
-		$branch = Update_Policy_Version::branch( $branch );
-		if ( '' === $branch || ! Update_Policy_Settings::may_decide() ) {
+		$branch = Digitizer_Update_Hold_Version::branch( $branch );
+		if ( '' === $branch || ! Digitizer_Update_Hold_Settings::may_decide() ) {
 			return false;
 		}
-		$policy                        = Update_Policy_Settings::all();
+		$policy                        = Digitizer_Update_Hold_Settings::all();
 		$policy['released'][ $branch ] = 1;
-		Update_Policy_Settings::save( $policy );
+		Digitizer_Update_Hold_Settings::save( $policy );
 		return true;
 	}
 }

@@ -1,11 +1,11 @@
 <?php
 /**
- * Update Policy - reading and filtering WordPress's core update offers.
+ * Digitizer Update Hold - reading and filtering WordPress's core update offers.
  *
  * Pure, and it never mutates what it is given: the transient it reads from is
  * shared with WordPress and with every other plugin on the site.
  *
- * @package Update_Policy
+ * @package Digitizer_Update_Hold
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Reading and filtering the core update offers, pure.
  */
-class Update_Policy_Offers {
+class Digitizer_Update_Hold_Offers {
 
 	/**
 	 * The major branches offered to a site, in the order they appear.
@@ -31,10 +31,10 @@ class Update_Policy_Offers {
 		}
 		foreach ( $updates as $offer ) {
 			$version = self::version_of( $offer );
-			if ( '' === $version || ! Update_Policy_Version::is_major( $installed, $version ) ) {
+			if ( '' === $version || ! Digitizer_Update_Hold_Version::is_major( $installed, $version ) ) {
 				continue;
 			}
-			$branch = Update_Policy_Version::branch( $version );
+			$branch = Digitizer_Update_Hold_Version::branch( $version );
 			if ( ! isset( $out[ $branch ] ) ) {
 				$out[ $branch ] = $version;
 			}
@@ -85,15 +85,15 @@ class Update_Policy_Offers {
 	 */
 	public static function is_held( $offer, $installed, $stamps, $released, $days, $now ) {
 		$version = self::version_of( $offer );
-		if ( '' === $version || ! Update_Policy_Version::is_major( $installed, $version ) ) {
+		if ( '' === $version || ! Digitizer_Update_Hold_Version::is_major( $installed, $version ) ) {
 			return false;
 		}
-		$branch = Update_Policy_Version::branch( $version );
+		$branch = Digitizer_Update_Hold_Version::branch( $version );
 		if ( ! empty( $released[ $branch ] ) ) {
 			return false;
 		}
 		$stamp = isset( $stamps[ $branch ] ) ? (int) $stamps[ $branch ] : 0;
-		return Update_Policy_Version::is_held( $stamp, $days, $now );
+		return Digitizer_Update_Hold_Version::is_held( $stamp, $days, $now );
 	}
 
 	/**

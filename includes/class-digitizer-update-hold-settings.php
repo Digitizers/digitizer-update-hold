@@ -1,12 +1,12 @@
 <?php
 /**
- * Update Policy - the stored policy.
+ * Digitizer Update Hold - the stored policy.
  *
  * One option, read and written through here so the multisite question is
  * answered in a single place: a core update is network-wide, and so is the
  * decision to hold one.
  *
- * @package Update_Policy
+ * @package Digitizer_Update_Hold
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -16,9 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * The stored policy.
  */
-class Update_Policy_Settings {
+class Digitizer_Update_Hold_Settings {
 
-	const OPTION       = 'update_policy';
+	const OPTION       = 'digitizer_update_hold';
 	const DEFAULT_DAYS = 30;
 
 	/**
@@ -51,13 +51,13 @@ class Update_Policy_Settings {
 			'released'  => array(),
 		);
 		foreach ( (array) $policy['seen'] as $branch => $stamp ) {
-			$branch = Update_Policy_Version::branch( $branch );
+			$branch = Digitizer_Update_Hold_Version::branch( $branch );
 			if ( '' !== $branch && (int) $stamp > 0 ) {
 				$clean['seen'][ $branch ] = (int) $stamp;
 			}
 		}
 		foreach ( (array) $policy['released'] as $branch => $yes ) {
-			$branch = Update_Policy_Version::branch( $branch );
+			$branch = Digitizer_Update_Hold_Version::branch( $branch );
 			if ( '' !== $branch && $yes ) {
 				$clean['released'][ $branch ] = 1;
 			}
@@ -82,7 +82,7 @@ class Update_Policy_Settings {
 		 *
 		 * @param int $days Days, 0 to disable the hold entirely.
 		 */
-		return (int) apply_filters( 'update_policy_hold_days', $policy['hold_days'] );
+		return (int) apply_filters( 'digitizer_update_hold_days', $policy['hold_days'] );
 	}
 
 	/**

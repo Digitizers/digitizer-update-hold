@@ -1,12 +1,12 @@
 <?php
 /**
- * Update Policy - version arithmetic.
+ * Digitizer Update Hold - version arithmetic.
  *
  * Pure: no WordPress, no options, no clock of its own. Everything here is a
  * question with a defensible answer for any input, because the input comes
  * from an update transient that a host, a plugin or a filter can have touched.
  *
- * @package Update_Policy
+ * @package Digitizer_Update_Hold
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Version arithmetic, pure.
  */
-class Update_Policy_Version {
+class Digitizer_Update_Hold_Version {
 
 	/**
 	 * The x.y branch of a version, or '' when it cannot be read.

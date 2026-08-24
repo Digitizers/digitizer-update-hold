@@ -3,14 +3,14 @@
 # Build an installable plugin ZIP from the current working tree.
 #
 # WordPress requires the archive to contain exactly one folder named after the
-# plugin, so the tracked files are staged into update-policy/ first.
+# plugin, so the tracked files are staged into digitizer-update-hold/ first.
 #
 # Usage:
-#   bin/build-zip.sh                 # -> dist/update-policy.zip
+#   bin/build-zip.sh                 # -> dist/digitizer-update-hold.zip
 #
 set -euo pipefail
 
-SLUG="update-policy"
+SLUG="digitizer-update-hold"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OUT_NAME="${1:-$SLUG.zip}"
 DIST="$ROOT/dist"

@@ -1,4 +1,4 @@
-=== Update Policy ===
+=== Digitizer Update Hold ===
 Contributors: benkalsky
 Tags: updates, core updates, major release, automatic updates, maintenance
 Requires at least: 5.5
@@ -14,7 +14,7 @@ Hold a major WordPress release back for a set number of days after your site fir
 
 A major WordPress release is the moment every plugin and theme on your site meets code they have never run against. Most of them are fine. The ones that are not get fixed within days - and a site that installed the release on day one is the one that found out the hard way.
 
-Update Policy gives your site a simple rule: **a major release waits, a security release does not.**
+Digitizer Update Hold gives your site a simple rule: **a major release waits, a security release does not.**
 
 = What it does =
 
@@ -34,13 +34,13 @@ Update Policy gives your site a simple rule: **a major release waits, a security
 
 = Multisite =
 
-A core update is network-wide, so the policy is too. The plugin is network-activated, its settings live under Network Admin > Settings, and only a network administrator can change the hold or lift one.
+A core update is network-wide, so the hold is too. The plugin is network-activated, its settings live under Network Admin > Settings, and only a network administrator can change the hold or lift one.
 
 == Installation ==
 
 1. Upload the plugin to `/wp-content/plugins/`, or install it from the Plugins screen.
 2. Activate it.
-3. Visit Settings > Update Policy to choose how many days a major release is held. The default is 30.
+3. Visit Settings > Digitizer Update Hold to choose how many days a major release is held. The default is 30.
 
 That is all. The next time a major release is offered, your site will hold it and tell you so on the Updates screen.
 
@@ -68,7 +68,7 @@ It is held for the full window from now, because the plugin cannot know how long
 
 = Does it work on multisite? =
 
-Yes. The plugin is network-activated, the settings are under Network Admin > Settings, and the policy applies to the whole network, which is the only thing a core update can apply to.
+Yes. The plugin is network-activated, the settings are under Network Admin > Settings, and the hold applies to the whole network, which is the only thing a core update can apply to.
 
 = Does it send any data anywhere? =
 

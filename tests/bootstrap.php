@@ -1,12 +1,12 @@
 <?php
 /**
- * Harness for the Update Policy unit tests.
+ * Harness for the Digitizer Update Hold unit tests.
  *
  * There is no WordPress here, so this defines the small slice of it the plugin
  * touches and the tests require the real files. Stub state lives in globals so
  * a test can rearrange the "site" between assertions.
  *
- * Run: php tests/policy-test.php
+ * Run: php tests/digitizer-update-hold-test.php
  */
 
 define( 'ABSPATH', '/tmp/' );
