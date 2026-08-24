@@ -11,7 +11,6 @@
  * License:           GPLv2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       update-policy
- * Domain Path:       /languages
  * Network:           true
  *
  * @package Update_Policy
@@ -46,20 +45,6 @@ function update_policy_boot() {
 	}
 }
 add_action( 'plugins_loaded', 'update_policy_boot' );
-
-/**
- * Load the bundled translations.
- *
- * Kept deliberately. WordPress finds language packs from WordPress.org on its
- * own, but a pack exists only once the plugin's translation has been
- * completed there - and until it has, a Hebrew site would see English. The
- * catalog ships inside the plugin for that interval, and this is what loads
- * it. On init rather than earlier, which is where WordPress 6.7 asks for it.
- */
-function update_policy_load_textdomain() {
-	load_plugin_textdomain( 'update-policy', false, dirname( UPDATE_POLICY_BASENAME ) . '/languages' );
-}
-add_action( 'init', 'update_policy_load_textdomain' );
 
 /**
  * A Settings link on the plugins list, pointing wherever the screen lives.
