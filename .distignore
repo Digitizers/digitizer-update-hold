@@ -1,0 +1,11 @@
+# Paths excluded from the WordPress.org deploy (10up/action-wordpress-plugin-deploy).
+# The plugin lives at the repo root, so development-only paths are listed here.
+.distignore
+.git
+.github
+.wordpress-org
+.gitignore
+assets
+bin
+dist
+tests
