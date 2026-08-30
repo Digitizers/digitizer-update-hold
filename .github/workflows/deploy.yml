@@ -1,0 +1,28 @@
+name: Deploy to WordPress.org
+on:
+  release:
+    types: [published]
+
+# Least privilege: the job only checks out the repo and deploys to WordPress.org
+# SVN using SVN_USERNAME/SVN_PASSWORD secrets — it never writes back via GITHUB_TOKEN.
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy to WordPress.org
+    runs-on: ubuntu-latest
+    # Skip pre-releases (beta, rc, alpha) — only stable releases ship to WP.org SVN.
+    if: github.event.release.prerelease == false
+    steps:
+      - uses: actions/checkout@v5
+
+      # The plugin lives at the repo root, so BUILD_DIR is left unset and the
+      # action reads .distignore to decide what to ship.
+      - name: WordPress Plugin Deploy
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: digitizer-update-hold
+          ASSETS_DIR: .wordpress-org
