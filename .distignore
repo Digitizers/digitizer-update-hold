@@ -3,7 +3,9 @@
 .distignore
 .git
 .github
+.wordpress-org
 .gitignore
+assets
 bin
 dist
 tests

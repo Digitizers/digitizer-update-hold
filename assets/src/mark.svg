@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- Update ring, broken at the top: the cycle is paused, not broken. -->
+  <path d="M 107.8 52.7 A 78 78 0 1 0 148.2 52.7"
+        fill="none" stroke="#f59e0b" stroke-width="16" stroke-linecap="round"/>
+  <polygon points="127.9,47.3 152.6,36.3 143.8,69.1" fill="#f59e0b"/>
+  <!-- Pause bars -->
+  <rect x="105" y="99" width="16" height="58" rx="6" fill="#ffffff"/>
+  <rect x="135" y="99" width="16" height="58" rx="6" fill="#ffffff"/>
+</svg>
