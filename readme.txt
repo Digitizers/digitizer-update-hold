@@ -4,7 +4,7 @@ Tags: updates, core updates, major release, automatic updates, maintenance
 Requires at least: 5.5
 Tested up to: 7.1
 Requires PHP: 7.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,9 @@ Yes. The plugin is network-activated, the settings are under Network Admin > Set
 No. It makes no network requests at all.
 
 == Changelog ==
+
+= 1.0.1 =
+* The plugin is credited to Digitizer, the studio that maintains it, rather than to an individual. No functional change.
 
 = 1.0.0 =
 * First release.
