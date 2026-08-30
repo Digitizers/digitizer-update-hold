@@ -74,6 +74,10 @@ Yes. The plugin is network-activated, the settings are under Network Admin > Set
 
 No. It makes no network requests at all.
 
+== Screenshots ==
+
+1. The settings screen: how long a major release waits, and what is being held right now.
+
 == Changelog ==
 
 = 1.0.1 =
