@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Digitizer Update Hold
- * Plugin URI:        https://github.com/Digitizers/digitizer-update-hold
+ * Plugin URI:        https://www.digitizer.co.il/digitizer-pro-tools/
  * Description:       Holds a major WordPress release back for a set number of days after your site is first offered it, so your plugins and themes have time to catch up. Security and maintenance releases are never held.
  * Version:           1.0.1
  * Requires at least: 5.5
