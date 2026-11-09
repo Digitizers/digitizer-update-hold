@@ -4,7 +4,7 @@ Tags: updates, core updates, major release, automatic updates, maintenance
 Requires at least: 5.5
 Tested up to: 7.1
 Requires PHP: 7.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,9 @@ No. It makes no network requests at all.
 1. The settings screen: how long a major release waits, and what is being held right now.
 
 == Changelog ==
+
+= 1.0.2 =
+* Credits Digitizer in the readme, with a link to the Digitizer Pro Tools page, and lists the Digitizer account as a contributor. No functional change.
 
 = 1.0.1 =
 * The plugin is credited to Digitizer, the studio that maintains it, rather than to an individual. No functional change.
