@@ -36,6 +36,8 @@ Digitizer Update Hold gives your site a simple rule: **a major release waits, a 
 
 A core update is network-wide, so the hold is too. The plugin is network-activated, its settings live under Network Admin > Settings, and only a network administrator can change the hold or lift one.
 
+Built and maintained by [Digitizer](https://www.digitizer.co.il/), a WordPress studio.
+
 == Installation ==
 
 1. Upload the plugin to `/wp-content/plugins/`, or install it from the Plugins screen.
